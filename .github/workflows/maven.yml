@@ -31,6 +31,6 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean install --settings=.maven.settings.xml --file pom.xml
       - name: Snyk monitor
-        run: snyk test --maven-aggregate-project
+        run: snyk test --all-projects
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
