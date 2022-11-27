@@ -48,3 +48,5 @@ klass.log*
 .factorypath
 .vscode/
 klass-forvaltning/src/main/webapp/VAADIN/themes/klasstheme/styles.css
+.dccache
+snyk-sarif.json
