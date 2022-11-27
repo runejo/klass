@@ -30,7 +30,12 @@ jobs:
             ${{ runner.os }}-maven-
       - name: Build with Maven
         run: mvn -B clean install --settings=.maven.settings.xml --file pom.xml
-      - name: Snyk monitor
-        run: snyk test --all-projects
+      - name: Snyk Test
+        run: snyk test --all-projects --sarif-file-output=snyk-sarif.json
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk-sarif.json
